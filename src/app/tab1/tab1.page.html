@@ -1,11 +1,11 @@
-<ion-header [translucent]="true">
+<!-- <ion-header [translucent]="true">
   <ion-toolbar>
     <ion-title>
-      Tab 1
+      Home
     </ion-title>
   </ion-toolbar>
-</ion-header>
-
+</ion-header> -->
+<!-- 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
     <ion-toolbar>
@@ -13,5 +13,68 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
-</ion-content>
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let note of notes" (click)="print(note)">
+      <ion-label>
+        note
+      </ion-label>
+
+    </ion-item>
+  </ion-list> -->
+  <!-- <ion-header>
+    <ion-toolbar color="primary">
+      <ion-title>
+        ToDo List
+      </ion-title>
+    </ion-toolbar>
+  </ion-header> -->
+  
+  <ion-content>
+  
+    <div class="bg-img">
+      <h1>Today</h1>
+      <h5> {{ currentDate | date:'shortDate'}} </h5>
+  
+      <ion-card *ngFor="let task of allTasks">
+        <ion-item-sliding>
+          <ion-item>
+            <ion-checkbox (ionChange)="editChecked(task)" [checked]="task.checked" slot="start"></ion-checkbox>
+            <ion-label>
+  
+              <h4 *ngIf="!task.checked">  {{ task.text }} </h4>
+              <h4 *ngIf="task.checked" style="text-decoration : line-through"   > {{ task.text }} </h4>
+              <p> {{ task.date | date:'shortTime'}}</p>
+  
+            </ion-label>
+          </ion-item>
+          <ion-item-options>
+            <ion-item-option (click)="onDelete(task.id)" color="danger">Delete</ion-item-option>
+          </ion-item-options>
+        </ion-item-sliding>
+      </ion-card>
+  
+      <ion-card *ngIf="!showAddButton">
+  
+        <ion-item>
+          <ion-input #inputText placeholder="Add a task..." type="text"></ion-input>
+          <ion-button (click)="onAddTask(inputText.value)">
+            <ion-icon name="add-outline"></ion-icon>
+          </ion-button>
+        </ion-item>
+  
+      </ion-card>
+  
+      <ion-card *ngIf="showAddButton">
+        <ion-button (click)="toggleShowAdd()" expand="block">Add a Task</ion-button>
+      </ion-card>
+      <ion-card *ngIf="!showAddButton">
+        <ion-button (click)="toggleShowAdd()" expand="block">Cancel</ion-button>
+      </ion-card>
+  
+  
+    </div>
+  </ion-content>
+
+
+

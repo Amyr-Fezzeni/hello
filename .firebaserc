@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "hello-beac4": {
+      "hosting": {
+        "app": [
+          "hello-beac4"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "hello-beac4"
+  }
+}
